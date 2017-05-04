@@ -1,3 +1,3 @@
 # DarkOrbit Reloaded - Galaxy Gate Tool
 ### O que é?
-Uma tool para girar o galaxy gates automáticamente.
+Uma tool para girar o galaxy gates automaticamente.
