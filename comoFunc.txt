@@ -1,0 +1,98 @@
+= LOGIN
+= OS GATES
+  > Todo giro é feito a partir de uma URL
+  > REQUEST HEADERS
+    + URL:
+    https://<server>.darkorbit.com/flashinput/galaxyGates.php?userID=<uid>&action=multiEnergy&sid=<sid>&gateID=<gid>&<nomegate>=1&sample=1[&spinamount=5/10/100][&multiplier=1/2/3/4/5]
+      ++ Alpha: <nomegate> = alpha; <gid> = 1
+      ++ Beta: <nomegate> = beta; <gid> = 2
+      ++ Gamma: <nomegate> = gamma; <gid> = 3
+      ++ Delta: <nomegate> = delta; <gid> = 4
+      ++ Epsilon: <nomegate> = epsilon; <gid> = 5
+      ++ Zeta: <nomegate> = zeta; <gid> = 6
+      ++ Kappa: <nomegate> = kappa; <gid> = 7
+      ++ Lambda: <nomegate> = lambda; <gid> = 8
+      ++ Hades: <nomegate> = hades; <gid> = 13
+      ++ Kuiper: <nomegate> = streuner; <gid> = 19
+    + Host:"<server>.darkorbit.com"
+    + User-Agent
+    + Accept: "[...]"
+    + Accept-language: [...];
+    + Accept-enconding: "gzip, deflate, br"
+    + Refereer: "https://darkorbit-22.bpsecure.com/swf_global/gatebuilder.swf?__cv=019492ccf38e6b521f32a6aa0534ec00"
+      ++ _CV encontrado na source da página do galaxy gate
+        -- flashembed("gatebuilder", {"src": "https://darkorbit-22.bpsecure.com/swf_global/gatebuilder.swf?__cv=019492ccf38e6b521f32a6aa0534ec00"
+    + Cookie:
+      "hadesGateDialog_72319718=1; rendar-locale=pt_BR; _ga=GA1.2.864883092.1492655445; lastLogin=1492951839; visid_incap_286320=FWzctkpbRnuUqWKJyyhao18d+FgAAAAAQUIPAAAAAAAlQHIefT9zcEOsAyaFalEB; __bpid=58f81d54HFa00cAaGa2XIQgMm6cLDohB; __bpid=58f81d54HFa00cAaGa2XIQgMm6cLDohB; __gads=ID=52693d2dbb229f75:T=1492730371:S=ALNI_MbmIvFbZJJvchqVjUqOqmF6kM_E0w; acr=679; aid=1816; visid_incap_286320=FWzctkpbRnuUqWKJyyhao18d+FgAAAAAQUIPAAAAAAAlQHIefT9zcEOsAyaFalEB; _gid=GA1.2.10915484.1493780038; dosid=c9fef7490fbca2311ebb19fe8f4d455a; bptid=48ba3b25bd725a810c6604902a7934b9; nlbi_286320=EJeSWcjLgkikj44VSl3PIgAAAABdgz8NgnP6FuvExWV/HOfs; incap_ses_297_286320=Te6Maj8vOWkrHZU5iSgfBAy4CFkAAAAAlQ8AwfnmO3TFVPpUl0lAQQ==; eventstream_capdone=1; tmp_browser_os=Firefox&53.0&Windows&10; targetedOffersEvent_72319718=2017-05-02+08%3A42%3A42; BP_DO_tracking_viewToReg_view=1"
+    + Connection: "keep-alive"
+  > COOKIES
+    + dosid
+      - value: "<sid>"
+      - path: "/"
+    + bpid (Aparece como tid num codigo javascript)
+    ...
+  > RESPONSE
+    + É um XML que descreve:
+      ++ Em qual portal foi rodado
+      ++ Quanto de uridium há na conta após o giro
+      ++ Quantas energias há na conta após o giro
+      ++ Quantos giros foram feitos
+      ++ Quanto custou a energia
+      ++ hadesGateDialog?
+      ++ Todos os multiplicadores de cada portal
+      ++ Os items <items><item></items>
+        - MUNIÇÃO [spins="<qntGiros>" amount="<qntGanhou>" date="<data>"]
+          -- MCB-25 (x2) [type="battery" item_id="2"]
+          -- SAB [type="battery" item_id="5"]
+          -- MCB-50 (x3) [type="battery" item_id="3"]
+          -- UCB-100 (x4) [type="battery" item_id="4"]
+          -- PLT-2021 [type="rocket" spins="<n>" amount="<n>"]
+          -- ACM-01 (Mina comum) [type="rocket" item_id="11"]
+        - PARTE DE PORTAL [type="part" current="<qntPartesApósGiro>" total="<qntPartesTotalDoGG>" state="[in_progress][done?]" gate_id="<gid>" part_id="<partid>"]
+        - XENOMIT (ORE?) [type="ore" item_id="4" spins="<numeroDeGiros>" amount="<qntGanhou>"]
+        - BLINDAGEM NANO [type="nanohull" amount="<qntGanhou>"]
+        - BÔNUS DE REPARO [type="voucher" spins="<nSpins>" amount="<qntGanhou>"]
+        - ARQUIVO LOG [type="logfile" spins="<nSpins>"]
+        - É válido deduzir que <nSpins> seja a quantidade de spins que gerou aquele <qntGanhou> quando há um spinamout diferente de 1.
+      ++ spinOnSale? (Provavelmente promoção de domingo, verificar isso)
+      ++ spinSaleParcentage? (Idem acima)
+      ++ galaxyGateDay? (Idem acima)
+      ++ bonusRewardsDay? (Idem acima)
+    + EXEMPLO:
+      <jumpgate>
+        <mode>alpha</mode>
+        <money>697378</money>
+        <samples>442</samples>
+        <spinamount_selected>1</spinamount_selected>
+        <energy_cost mode="standard">95</energy_cost>
+        <hadesGateDialog>0</hadesGateDialog>
+        <multipliers>
+          <multiplier mode="alpha" value="3" state="0" />
+          <multiplier mode="beta" value="3" state="0" />
+          <multiplier mode="gamma" value="3" state="0" />
+          <multiplier mode="delta" value="0" state="0" />
+          <multiplier mode="epsilon" value="0" state="0" />
+          <multiplier mode="zeta" value="0" state="0" />
+          <multiplier mode="kappa" value="0" state="0" />
+          <multiplier mode="lambda" value="0" state="0" />
+          <multiplier mode="hades" value="0" state="0" />
+          <multiplier mode="streuner" value="0" state="0" />
+        </multipliers>
+        <items>
+          <item type="ore" item_id="4" spins="1" amount="12" date="1493780299" />
+        </items>
+        <spinOnSale>0</spinOnSale>
+        <spinSalePercentage>0</spinSalePercentage>
+        <galaxyGateDay>0</galaxyGateDay>
+        <bonusRewardsDay>0</bonusRewardsDay>
+      </jumpgate>
+    > AS IMAGENS DO GATE TAMBÉM SÃO REQUISITADAS A PARTIR DE UMA URL
+      > REQUEST HEADERS:
+        + URL:
+          https://<server>.darkorbit.com/jumpgate.php?userID=<uid>&gateID=<gid>&type=[full/last]
+          full => Gate com todas as partes
+          last => Últimas partes tiradas no spin, o jogo mostra-as em amarelo.
+        + COOKIES:
+          // Todo: descrever cookies aqui das imagens.
+    > QUANDO SE SELECIONA NOVO NUMERO DE SPINS, É REQUEST PELA URL
+      +  https://br1.darkorbit.com/flashinput/galaxyGates.php?userID=72319718&sid=076f63b5da9737500f6ff74b47c69d47&action=saveSpinAmount&value=1
