@@ -6,34 +6,49 @@ using System.Threading.Tasks;
 
 namespace DRGGTLib.DarkOrbit
 {
-    class PartePortal : Item
+    public class PartePortal : Item
     {
         public Portais Portal { get; set; }
         public int QuantidadeDePartesAtual { get; set; }
         public int QuantidadeDePartesTotal { get; set; }
         public int IdParte { get; set; }
+        public bool Duplicada { get; set; }
         public bool Completo { get; set; } = false;
 
         public PartePortal(){}
-        public PartePortal(int tipo, int idItem, int numeroGiros, int quantidade, long data, int portal, int qntAtual, int qntTotal, int idParte) : base(tipo, idItem, numeroGiros, quantidade, data)
+        public PartePortal(long data, int portal, int qntAtual, int qntTotal, int idParte, bool duplicada = false)
         {
-            if(Tipo != TipoDeItem.part)
-            {
-                throw new ArgumentOutOfRangeException("tipo", "Não é possível instanciar um item comum como parte de portal.");
-            }
-            else
-            {
-                Portal = (Portais)portal;
-                QuantidadeDePartesAtual = qntAtual;
-                QuantidadeDePartesTotal = qntTotal;
-                IdParte = idParte;
-                Completo = (qntTotal == qntAtual) ? true : false;
-            }
+            Tipo = TipoDeItem.part;
+            Quantidade = 1;
+            Portal = (Portais)portal;
+            QuantidadeDePartesAtual = qntAtual;
+            QuantidadeDePartesTotal = qntTotal;
+            IdParte = idParte;
+            Duplicada = duplicada;  
+            Completo = (qntTotal == qntAtual) ? true : false;
+            Parse();            
+        }
+
+        public PartePortal(int portal, int idParte, bool duplicada = true)
+        {
+            Tipo = TipoDeItem.part;
+            Quantidade = 1;
+            Portal = (Portais)portal;
+            IdParte = idParte;
+            Duplicada = duplicada;
+            Parse();
         }
 
         public void Parse()
         {
-            Descricao = $"{(Completo == true ? "[Completo]" :  "")} Parte {IdParte} do Portal {Portal}";
+            if(!Duplicada)
+            { 
+                Descricao = $"{(Completo == true ? "[Completo] " :  "")}Parte {IdParte} do Portal {Portal}";
+            }
+            else
+            {
+                Descricao = $"[Duplicada] Parte {IdParte} do Portal {Portal}";
+            }
         } 
     }
 }

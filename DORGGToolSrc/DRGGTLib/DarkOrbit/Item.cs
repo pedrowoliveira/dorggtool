@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DRGGTLib.DarkOrbit
 {
-    class Item
+    public class Item
     {
         public enum TipoDeItem
         {
@@ -16,7 +16,8 @@ namespace DRGGTLib.DarkOrbit
             ore,
             nanohull,
             voucher,
-            logfile
+            logfile,
+            multiplier
         }
 
         public string Descricao { get; protected set; }
@@ -33,53 +34,28 @@ namespace DRGGTLib.DarkOrbit
             IdItem = idItem;
             NumeroGiros = numeroGiros;
             Quantidade = quantidade;
+            // Não é bem assim que funciona.
             Data = new DateTime(data);
             Parse();
         }
 
         private void Parse()
         {
+            string tipo;
             if (Tipo == TipoDeItem.battery)
             {
-                string calibre = "";
-                if (IdItem == 2)
-                {
-                    calibre = "MCB-25";
-                }
-                else if (IdItem == 3)
-                {
-                    calibre = "MCB-50";
-                }
-                else if (IdItem == 4)
-                {
-                    calibre = "UCB-100";
-                }
-                else if (IdItem == 5)
-                {
-                    calibre = "SAB";
-                }
-                else
-                {
-                    calibre = "???";
-                }
-                Descricao = $"{Quantidade} {calibre}";
+                tipo = ((Municoes)IdItem).ToString();
+                Descricao = $"{Quantidade} {tipo}";
             }
             else if (Tipo == TipoDeItem.rocket)
             {
-                string calibre = "";
-                if (IdItem == 11)
-                {
-                    calibre = "ACM-01";
-                }
-                else if (IdItem == 3)
-                {
-                    calibre = "PLT-2021";
-                }
-                Descricao = $"{Quantidade} {calibre}";
+                tipo = ((Misseis)IdItem).ToString();
+                Descricao = $"{Quantidade} {tipo}";
             }
             else if (Tipo == TipoDeItem.ore)
             {
-                Descricao = $"{Quantidade} xenomit";
+                tipo = ((Recurso)IdItem).ToString();
+                Descricao = $"{Quantidade} {tipo}";
             }
             else if (Tipo == TipoDeItem.nanohull)
             {
@@ -93,7 +69,10 @@ namespace DRGGTLib.DarkOrbit
             {
                 Descricao = $"{Quantidade} arquivo(s) log";
             }
-            Descricao += $" em {NumeroGiros} giros";
+            else if (Tipo == TipoDeItem.multiplier)
+            {
+                Descricao = $"{Quantidade} multiplicador(es)";
+            }
         }
     }
 }

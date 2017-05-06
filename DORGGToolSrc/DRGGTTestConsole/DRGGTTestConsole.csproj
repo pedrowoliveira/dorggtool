@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{286E457F-1EEE-4862-8BF7-4D8422D49E09}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DRGGTLib</RootNamespace>
-    <AssemblyName>DRGGTLib</AssemblyName>
+    <ProjectGuid>{99235F53-21B5-4F07-92FC-2C9C57D49B47}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DRGGTTestConsole</RootNamespace>
+    <AssemblyName>DRGGTTestConsole</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -40,13 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DarkOrbit\Conta.cs" />
-    <Compile Include="DarkOrbit\Giro.cs" />
-    <Compile Include="DarkOrbit\Item.cs" />
-    <Compile Include="DarkOrbit\Multiplicador.cs" />
-    <Compile Include="DarkOrbit\PartePortal.cs" />
-    <Compile Include="DarkOrbit\EnumItens.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DRGGTLib\DRGGTLib.csproj">
+      <Project>{286e457f-1eee-4862-8bf7-4d8422d49e09}</Project>
+      <Name>DRGGTLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

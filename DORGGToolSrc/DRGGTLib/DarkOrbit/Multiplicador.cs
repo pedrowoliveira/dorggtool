@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DRGGTLib.DarkOrbit
 {
-    class Multiplicador
+    public class Multiplicador
     {
         public Portais Portal { get; set; }
         public int Fator { get; set; }

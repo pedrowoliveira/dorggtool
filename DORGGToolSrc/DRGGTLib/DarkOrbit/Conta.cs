@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DRGGTLib.DarkOrbit
 {
-    class Conta
+    public class Conta
     {   
         public string Usuario { get; private set; }
         public string Senha { get; private set; }

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.25928.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRGGTLib", "DRGGTLib\DRGGTLib.csproj", "{286E457F-1EEE-4862-8BF7-4D8422D49E09}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DRGGTTestConsole", "DRGGTTestConsole\DRGGTTestConsole.csproj", "{99235F53-21B5-4F07-92FC-2C9C57D49B47}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{286E457F-1EEE-4862-8BF7-4D8422D49E09}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{286E457F-1EEE-4862-8BF7-4D8422D49E09}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{286E457F-1EEE-4862-8BF7-4D8422D49E09}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99235F53-21B5-4F07-92FC-2C9C57D49B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99235F53-21B5-4F07-92FC-2C9C57D49B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99235F53-21B5-4F07-92FC-2C9C57D49B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99235F53-21B5-4F07-92FC-2C9C57D49B47}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
